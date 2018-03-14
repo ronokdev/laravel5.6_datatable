@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Bootstrap Example</title>
+    <title>Data-Table</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
@@ -19,6 +19,7 @@
     <table id="myTable" class="table">
         <thead>
             <tr>
+                <th>ID</th>
                 <th>Name</th>
                 <th>Address</th>
                 <th>Phone Number</th>
@@ -26,16 +27,24 @@
             </tr>
         </thead>
 
-        <tbody>
-        @foreach ($tempResult as $row)
-            <tr>
-                <td>{{ $row['name'] }}</td>
-                <td>{{ $row['address'] }}</td>
-                <td>{{ $row['phonenumber'] }}</td>
-                <td>{{ $row['created_at'] }}</td>
-            </tr>
-        @endforeach
-        </tbody>
+        {{--<tbody>--}}
+        {{--@foreach ($tempResult as $row)--}}
+            {{--<tr>--}}
+                {{--<td>{{ $row['name'] }}</td>--}}
+                {{--<td>{{ $row['address'] }}</td>--}}
+                {{--<td>{{ $row['phonenumber'] }}</td>--}}
+                {{--<td>{{ $row['created_at'] }}</td>--}}
+            {{--</tr>--}}
+        {{--@endforeach--}}
+        {{--</tbody>--}}
+
+        <tfoot>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+        </tfoot>
     </table>
 </div>
 

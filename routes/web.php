@@ -18,3 +18,4 @@ Route::get('/', function () {
 
 
 Route::get('/fetchuser','UsersController@fetchUsers');
+Route::get('/fetchuserByAjax','UsersController@fetchUsersForServerSite');
