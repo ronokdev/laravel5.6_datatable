@@ -1,0 +1,7 @@
+myTable tbody tr {
+    cursor: pointer !important;
+}
+
+div.dataTables_filter {
+    padding-top: 0.55em;
+}

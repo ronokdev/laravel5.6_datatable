@@ -24,7 +24,7 @@ class UsersController extends Controller
         /*
          * draw = page Number
          * start = Start Index
-         * length = data per page
+         * length = `data per page
          * search['value'] = search in Top Right Corner
          * recordsTotal
          * recordsFiltered
