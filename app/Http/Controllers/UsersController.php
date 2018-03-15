@@ -31,19 +31,70 @@ class UsersController extends Controller
          * */
         
 //        dd($tempIncomingRequest['search']['value']);
-        $tempResult_Count =  User::get(['id'])->toArray();
         
+        
+        
+        // search by Name (Right Top Corner search)
         if($tempIncomingRequest['search']['value'] != ''){
             $temp_search = $tempIncomingRequest['search']['value'];
-            $XtraSql = "'name','like','%'.'".$temp_search."'.'%'";
+            $XtraSql = "name like '%".$temp_search."%'";
     
-            $tempResult =  User::skip($tempIncomingRequest['start'])->take($tempIncomingRequest['length'])->where('name','like','%'.$tempIncomingRequest['search']['value'].'%')->get()->toArray();
+           
         }
         else{
-            $tempResult =  User::skip($tempIncomingRequest['start'])->take($tempIncomingRequest['length'])->get()->toArray();
+            $XtraSql = 'id >= 0';
         }
         
         
+        // search by ID
+        
+        if($tempIncomingRequest['columns'][0]['search']['value'] != '' ){
+            $searchById = "id like '%".$tempIncomingRequest['columns'][0]['search']['value']."%'";
+        }
+        else{
+            $searchById = 'id >= 0';
+        }
+    
+        
+        
+        // search by Address
+    
+        if($tempIncomingRequest['columns'][2]['search']['value'] != '' ){
+            $searchByAddress = "address like '%".$tempIncomingRequest['columns'][2]['search']['value']."%'";
+        }
+        else{
+            $searchByAddress = 'id >= 0';
+        }
+    
+        
+        
+        
+        // search by Address
+    
+        if($tempIncomingRequest['columns'][3]['search']['value'] != '' ){
+            $searchByphonenumber = "phonenumber like '%".$tempIncomingRequest['columns'][3]['search']['value']."%'";
+        }
+        else{
+            $searchByphonenumber = 'id >= 0';
+        }
+        
+        
+        
+        // getting the total Count
+        $tempResult_Count =  User::whereRaw($XtraSql)
+                                ->whereRaw($searchById)
+                                ->whereRaw($searchByAddress)
+                                ->whereRaw($searchByphonenumber)
+                                ->get(['id'])->toArray();
+        
+        
+        // getting the origin Data
+        $tempResult =  User::skip($tempIncomingRequest['start'])->take($tempIncomingRequest['length'])
+                                                                ->whereRaw($XtraSql)
+                                                                ->whereRaw($searchById)
+                                                                ->whereRaw($searchByAddress)
+                                                                ->whereRaw($searchByphonenumber)
+                                                                ->get()->toArray();
         
         for($x=0;$x<sizeof($tempResult);$x++){
             $data[$x] = [$tempResult[$x]['id'],$tempResult[$x]['name'],$tempResult[$x]['address'],$tempResult[$x]['phonenumber'],$tempResult[$x]['created_at']];

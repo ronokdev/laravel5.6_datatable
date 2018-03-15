@@ -11,9 +11,8 @@ $(document).ready(function () {
     // adding a Search Field In every Column except Address
     $('#myTable tfoot th').each( function () {
         var title = $('#myTable thead th').eq( $(this).index() ).text();
-        console.log(title);
-        if(title != 'Address'){
-            $(this).html( '<input type="text" placeholder="Search '+title+'" />' );
+        if(title != 'Name'){
+            $(this).html( '<input type="text" placeholder="Search by '+title+'" />' );
         }
 
     } );
@@ -21,7 +20,6 @@ $(document).ready(function () {
 
     UserTable.columns().every( function () {
         var column = this;
-
         $( 'input', this.footer() ).on( 'keyup change', function () {
             column
                 .search( this.value )
