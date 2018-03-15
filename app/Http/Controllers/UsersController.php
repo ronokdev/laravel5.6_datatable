@@ -54,6 +54,9 @@ class UsersController extends Controller
         else{
             $searchById = 'id >= 0';
         }
+        
+        
+        
     
         
         
@@ -69,7 +72,7 @@ class UsersController extends Controller
         
         
         
-        // search by Address
+        // search by Phone Number
     
         if($tempIncomingRequest['columns'][3]['search']['value'] != '' ){
             $searchByphonenumber = "phonenumber like '%".$tempIncomingRequest['columns'][3]['search']['value']."%'";
@@ -77,6 +80,26 @@ class UsersController extends Controller
         else{
             $searchByphonenumber = 'id >= 0';
         }
+    
+        // search by Date
+    
+        if($tempIncomingRequest['columns'][4]['search']['value'] != '' ){
+            $searchByDate = "created_at like '%".$tempIncomingRequest['columns'][4]['search']['value']."%'";
+        }
+        else{
+            $searchByDate = 'id >= 0';
+        }
+        
+        
+        // Order By Create Date
+        if($tempIncomingRequest['order'][0]['column'] == 4 ){
+            $orderByCreatedDate = "created_at ".$tempIncomingRequest['order'][0]['dir'];
+        }
+        else{
+            $orderByCreatedDate = 'created_at DESC';
+        }
+        
+        
         
         
         
@@ -85,15 +108,19 @@ class UsersController extends Controller
                                 ->whereRaw($searchById)
                                 ->whereRaw($searchByAddress)
                                 ->whereRaw($searchByphonenumber)
+                                ->whereRaw($searchByDate)
                                 ->get(['id'])->toArray();
         
-        
+     
         // getting the origin Data
         $tempResult =  User::skip($tempIncomingRequest['start'])->take($tempIncomingRequest['length'])
                                                                 ->whereRaw($XtraSql)
                                                                 ->whereRaw($searchById)
                                                                 ->whereRaw($searchByAddress)
                                                                 ->whereRaw($searchByphonenumber)
+                                                                ->whereRaw($searchByDate)
+                                                                ->orderByRaw($orderByCreatedDate)
+                                                                ->orderByRaw($searchByphonenumber)
                                                                 ->get()->toArray();
         
         for($x=0;$x<sizeof($tempResult);$x++){
