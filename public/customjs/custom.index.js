@@ -7,7 +7,15 @@ $(document).ready(function () {
 
         "processing": true,
         "serverSide": true,
-        "ajax": "/fetchuserByAjax",
+        "ajax": {
+            "url": "/fetchuserByAjax",
+            "data": function (d) {
+                d.date_start = $('#min').val();  // 2015-01-01
+                d.date_end = $('#max').val();  // 2017-01-01
+            },
+        },
+
+
          cache: false,
          rowId: 'id',
         "pagingType": "simple_numbers",
@@ -81,7 +89,12 @@ $(document).ready(function () {
             },
 
         ],
+
+
+
+
     });
+
 
     $("div.toolbar").html('<b>This Is A Custom Toolbarrrrrrrr</b>');
 
@@ -111,7 +124,7 @@ $(document).ready(function () {
     // reloading table after clearing the state (page Number , Column search)
     $('.basic_table').on('click',function (event) {
         UserTable.state.clear();
-        window.location.reload();
+        UserTable.ajax.reload();
 
     });
 
@@ -121,7 +134,20 @@ $(document).ready(function () {
     $('#myTable tbody').on('click', 'tr', function () {
         var data = UserTable.row( this ).data();
         alert( 'You clicked on '+data[0]+'\'s row' );
-    } );
+    });
+
+
+
+    $('.search_table').on('click',function () {
+        console.log("searching");
+        UserTable.ajax.reload();           // reloading the ajaxxx
+    })
+
+
 });
+
+
+
+
 
 

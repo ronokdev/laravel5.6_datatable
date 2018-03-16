@@ -11,15 +11,40 @@
 
             <div class="col-sm-12">
                 <section class="panel">
-                    <button class="basic_table">Reload Table</button>
-                    {{--<header class="panel-heading">--}}
-                        {{--Table--}}
-                        {{--<span class="tools pull-right">--}}
-                            {{--<a href="javascript:;" class="fa fa-chevron-down"></a>--}}
+
+                    <button type="button" class="basic_table btn btn-info ">
+                        <i class="fa fa-refresh"></i> Update
+                    </button>
+                    <br>
+                    <br>
+
+
+
+
+
+                    <div class="form-group" style="margin-bottom: 4pc;">
+                        <label class="col-sm-2 control-label">Date Range Search</label>
+                        <div class="col-sm-4">
+                            <input class="form-control" placeholder="Starting Date" type="text" id="min" name="min">
+                        </div>
+                        <div class="col-sm-4">
+                            <input class="form-control" placeholder="Ending Date" type="text" id="max" name="max">
+                        </div>
+                        <div class="col-sm-2">
+                            <button class="btn btn-success search_table"><i class="fa fa-search"></i>Search</button>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+
+
+                    <header class="panel-heading">
+                        Customized DataTable
+                        <span class="tools pull-right">
+                            <a href="javascript:;" class="fa fa-chevron-down"></a>
                             {{--<a href="javascript:;" class="fa fa-cog"></a>--}}
-                            {{--<a href="javascript:;" class="fa fa-times"></a>--}}
-                         {{--</span>--}}
-                    {{--</header>--}}
+                            <a href="javascript:;" class="fa fa-times"></a>
+                         </span>
+                    </header>
                     <div class="panel-body">
                         <div class="adv-table">
                             <table style="cursor:pointer;" width="100%" class="compact display table table-bordered table-striped" id="myTable">
@@ -54,7 +79,8 @@
 
 
 @section('js_scripts')
-    <script src="{{ asset('customjs/custom.index.js') }}"></script>
+
     <script src="{{ asset('customjs/jquery.dataTables.min.js') }}"></script>
     <link src="{{ asset('customcss/custom.css') }}"> </link>
+    <script src="{{ asset('customjs/custom.index.js') }}"></script>
 @endsection

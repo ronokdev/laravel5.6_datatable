@@ -25,7 +25,7 @@ class UsersController extends Controller
     public function fetchUsersForServerSite(Request $request){
         $data = array();
         $tempIncomingRequest = $request->all();
-        
+//        dd($tempIncomingRequest);
         /*
          * draw = page Number
          * start = Start Index
@@ -96,6 +96,25 @@ class UsersController extends Controller
         }
         
         
+        // search by Date Range
+        if($tempIncomingRequest['date_start'] != '' ){
+            $searchByDate_1 = " date(created_at) >= '".$tempIncomingRequest['date_start']."'";
+        }
+        else{
+            $searchByDate_1 = 'id >= 0';
+        }
+    
+        if($tempIncomingRequest['date_end'] != '' ){
+            $searchByDate_2 = "date(created_at) <= '".$tempIncomingRequest['date_end']."'";
+        }
+        else{
+            $searchByDate_2 = 'id >= 0';
+        }
+        
+        
+        
+        
+        
         // Order By Create Date
         if($tempIncomingRequest['order'][0]['column'] == 4 ){
             $orderByCreatedDate = "created_at ".$tempIncomingRequest['order'][0]['dir'];
@@ -114,6 +133,8 @@ class UsersController extends Controller
                                 ->whereRaw($searchByAddress)
                                 ->whereRaw($searchByphonenumber)
                                 ->whereRaw($searchByDate)
+                                ->whereRaw($searchByDate_1)
+                                ->whereRaw($searchByDate_2)
                                 ->get(['id'])->toArray();
         
      
@@ -124,10 +145,12 @@ class UsersController extends Controller
                                                                 ->whereRaw($searchByAddress)
                                                                 ->whereRaw($searchByphonenumber)
                                                                 ->whereRaw($searchByDate)
+                                                                ->whereRaw($searchByDate_1)
+                                                                ->whereRaw($searchByDate_2)
                                                                 ->orderByRaw($orderByCreatedDate)
                                                                 ->orderByRaw($searchByphonenumber)
                                                                 ->get()->toArray();
-        
+       
         for($x=0;$x<sizeof($tempResult);$x++){
             $data[$x] = [$tempResult[$x]['id'],$tempResult[$x]['name'],$tempResult[$x]['address'],$tempResult[$x]['phonenumber'],$tempResult[$x]['created_at']];
         }

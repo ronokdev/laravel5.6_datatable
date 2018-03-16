@@ -293,6 +293,7 @@ tfoot input {
 	color: #444;
 	border: 0px solid #32323a;
 	height: 38px;
+	border-bottom: 2px solid #32d2c9;
 }
 
 tfoot input.search_init {
