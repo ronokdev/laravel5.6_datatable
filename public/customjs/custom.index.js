@@ -1,13 +1,16 @@
 $(document).ready(function () {
 
+
+
     var UserTable = $('#myTable').DataTable({
 
 
         "processing": true,
         "serverSide": true,
         "ajax": "/fetchuserByAjax",
+         cache: false,
          rowId: 'id',
-        "pagingType": "full_numbers",
+        "pagingType": "simple_numbers",
         "dom": 'flriptB',                 //    { filter } { length } { info } { paging }  { table }
 
         // adding CSV EXCEL BUTTON
@@ -18,7 +21,7 @@ $(document).ready(function () {
 
          stateSave: true,                //  saving the state of a table
         // "order": [],                 // removing Order
-        // "scrollX": true,
+        // "scrollX": true,Mer
         // place holder to the default Search Box ( The one in the Top Right corner)
         language: {
             // search: "_INPUT_",
@@ -30,10 +33,10 @@ $(document).ready(function () {
             "infoFiltered":   "(filtered from _MAX_ total records)",
             "infoPostFix":    "",
             "thousands":      ",",
-            "lengthMenu":     "Show _MENU_ entries",
+            "lengthMenu":     "Show _MENU_ entries per page",
             "loadingRecords": "Loading...",
             // "processing":     "Loading , Please Wait",
-            "processing":     '<i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i><span class="sr-only">Loading...</span> ',
+            "processing":     '<i class="fa-spin fa fa-cog fa-pulse fa-3x fa-fw"></i><span class="sr-only"></span>',
             "search":         "Search:",
             "zeroRecords":    "No records to display",
             "paginate": {
@@ -78,9 +81,6 @@ $(document).ready(function () {
             },
 
         ],
-
-
-
     });
 
     $("div.toolbar").html('<b>This Is A Custom Toolbarrrrrrrr</b>');
@@ -122,11 +122,6 @@ $(document).ready(function () {
         var data = UserTable.row( this ).data();
         alert( 'You clicked on '+data[0]+'\'s row' );
     } );
-
-
-
-
-
 });
 
 

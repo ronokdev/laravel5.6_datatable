@@ -18,4 +18,5 @@ Route::get('/', function () {
 
 
 Route::get('/','UsersController@fetchUsers');
+Route::get('/d_board','UsersController@dashboard');
 Route::get('/fetchuserByAjax','UsersController@fetchUsersForServerSite');

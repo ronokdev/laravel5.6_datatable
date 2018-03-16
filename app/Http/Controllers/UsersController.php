@@ -10,6 +10,11 @@ class UsersController extends Controller
     public function index(){
         echo "index Function";
     }
+    
+    public function dashboard(){
+        return view('dashboard.dboard');
+    }
+    
     public function fetchUsers(){
     
 //        $tempResult =  User::limit(20)->get()->toArray();
