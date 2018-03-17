@@ -144,7 +144,34 @@ $(document).ready(function () {
     })
 
 
+    // daterange Picker
+    dateRangeFunction();
+
+
+
 });
+
+
+
+var dateRangeFunction = function() {
+
+    $('#dateRange').daterangepicker({
+        timePicker: false,
+        autoUpdateInput: true,
+        timePickerIncrement: 30,
+        locale: {
+            format: 'DD-MM-YYYY'
+        }
+    },
+
+    function(start, end, label) {
+        console.log('New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')');
+        $('#min').val(start.format('YYYY-MM-DD'));
+        $('#max').val(end.format('YYYY-MM-DD'));
+    });
+
+
+}
 
 
 

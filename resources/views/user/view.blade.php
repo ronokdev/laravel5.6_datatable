@@ -1,6 +1,10 @@
 @extends('layout.layout_main')
 
 
+@section('css_scripts')
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" />
+
+@endsection
 
 
 @section('content')
@@ -24,11 +28,14 @@
 
                     <div class="form-group" style="margin-bottom: 4pc;">
                         <label class="col-sm-2 control-label">Date Range Search</label>
-                        <div class="col-sm-4">
-                            <input class="form-control" placeholder="Starting Date" type="text" id="min" name="min">
+                        <div class="col-sm-6">
+                            <input class="form-control" placeholder=""  type="text" id="dateRange"  name="min">
                         </div>
                         <div class="col-sm-4">
-                            <input class="form-control" placeholder="Ending Date" type="text" id="max" name="max">
+                            <input class="form-control" placeholder="Starting Date"  style="display: none;" type="text" id="min" name="min">
+                        </div>
+                        <div class="col-sm-4">
+                            <input class="form-control" placeholder="Ending Date" style="display: none;" type="text" id="max" name="max">
                         </div>
                         <div class="col-sm-2">
                             <button class="btn btn-success search_table"><i class="fa fa-search"></i>Search</button>
@@ -79,8 +86,13 @@
 
 
 @section('js_scripts')
-
+    <script type="text/javascript" src="//cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
     <script src="{{ asset('customjs/jquery.dataTables.min.js') }}"></script>
     <link src="{{ asset('customcss/custom.css') }}"> </link>
     <script src="{{ asset('customjs/custom.index.js') }}"></script>
+
+
+    <!-- Include Date Range Picker -->
+    <script type="text/javascript" src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
+
 @endsection

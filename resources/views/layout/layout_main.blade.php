@@ -29,7 +29,7 @@
     <link href="{{ asset('bucket_admin/css/style-responsive.css') }}" rel="stylesheet" />
 
 
-
+    @yield('css_scripts');
 
 
 </head>
