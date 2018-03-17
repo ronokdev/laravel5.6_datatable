@@ -1,12 +1,12 @@
 # laravel5.6_datatable
 
 Work Done :
-  → Customized Datatable
-  → Server Side Scripting
-  → Custom Searching (Date Range Searching)
-  → Column Wise Searching
-  → Custom Pagination
-  → Template Used : bucket Admin
+  # Customized Datatable
+  # Server Side Scripting
+  # Custom Searching (Date Range Searching)
+  # Column Wise Searching
+  # Custom Pagination
+  # Template Used : bucket Admin
   
   
 Important file Path & name :
