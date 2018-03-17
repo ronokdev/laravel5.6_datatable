@@ -1,8 +1,8 @@
 # laravel5.6_datatable
 
 Work Done :
-  ** Customized Datatable
-  __ Server Side Scripting
+  1) Customized Datatable
+  1) Server Side Scripting
   __ Custom Searching (Date Range Searching)
   __ Column Wise Searching
   __ Custom Pagination
