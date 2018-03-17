@@ -16,3 +16,9 @@ Important file Path & name :
   4. view.blade.php ( laravel5.6_datatable\resources\views\user\view.blade.php  ) 
   5. custom.index.js ( laravel5.6_datatable\public\customjs\custom.index.js )
   
+  
+ DataBase :
+   1. Name : test
+   2. SQL file path : laravel5.6_datatable\test.sql
+  
+  
