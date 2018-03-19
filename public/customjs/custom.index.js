@@ -23,7 +23,15 @@ $(document).ready(function () {
 
         // adding CSV EXCEL BUTTON
         buttons: [
-            'copy', 'csv', 'excel', 'pdf', 'print'
+            {
+                extend: 'excel',
+                text: 'Save current page',
+                exportOptions: {
+                    modifier: {
+                        page: 'current'
+                    }
+                }
+            }
         ],
 
 
