@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
-
+use Excel;
 class UsersController extends Controller
 {
     public function index(){
@@ -169,5 +169,14 @@ class UsersController extends Controller
         
         
         return $tempArray;
+    }
+    
+    
+    public function fetchUsersForServerSite_excel_download(){
+        
+        // Generate and return the spreadsheet
+    
+        $invoicesArray= 'NOting Baby';
+        return $invoicesArray;
     }
 }

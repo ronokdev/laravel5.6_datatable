@@ -25,13 +25,28 @@ $(document).ready(function () {
         buttons: [
             {
                 extend: 'excel',
-                text: 'Save current page',
+                text: 'Download to Excel',
                 exportOptions: {
                     modifier: {
                         page: 'current'
                     }
                 }
+            },
+            {
+                text: 'TEST button',
+                action: function ( e, dt, node, config ) {
+                    alert( 'Button activated' );
+                    console.log(e);
+                    console.log(dt);
+                    console.log(node);
+                    console.log(config);
+                    ExcelGenerate();
+                }
+
+
+
             }
+
         ],
 
 
@@ -154,6 +169,22 @@ $(document).ready(function () {
 
     // daterange Picker
     dateRangeFunction();
+
+    var ExcelGenerate = function () {
+            alert("Excel Generate Funtion WOrking");
+
+        axios.get('/fetchuserByAjax/exceldownload', {
+            params: {
+                ID: 12345
+            }
+        })
+            .then(function (response) {
+                console.log(response);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    }
 
 
 
