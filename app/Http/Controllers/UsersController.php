@@ -139,6 +139,10 @@ class UsersController extends Controller
         
      
         // getting the origin Data
+    
+        $tempIncomingRequest['start'] = $tempIncomingRequest['start'] = '' ? 0 : $tempIncomingRequest['start'];
+        $tempIncomingRequest['length'] = $tempIncomingRequest['length'] = '' ? 10 : $tempIncomingRequest['length'];
+        
         $tempResult =  User::skip($tempIncomingRequest['start'])->take($tempIncomingRequest['length'])
                                                                 ->whereRaw($XtraSql)
                                                                 ->whereRaw($searchById)
